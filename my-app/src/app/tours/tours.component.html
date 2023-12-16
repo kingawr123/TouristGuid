@@ -1,7 +1,7 @@
 <div class="container">
     <h1>Tours</h1>
     <div class="list-of-tours">
-        <div class="tour" *ngFor="let tour of tours">
+        <div class="tour" [ngClass]="{'cheap': tour === getTheCheapestTour(), 'expensive': tour === getTheMostExpensiveTour()}" *ngFor="let tour of tours">
             <button id="delete" mat-icon-button (click)="deleteTour(tour)">
                 <mat-icon>delete</mat-icon>
             </button>
@@ -12,8 +12,9 @@
                 <p>{{tour.description}}</p>
                 <p>price: {{tour.price}}</p>
                 <p>available spots: {{tour.freeSpots}} </p>
+                <p class="room" [ngClass]="{'no-room': tour.freeSpots == 0}">There is no more spots available</p>
                 <div class="buttons">
-                    <button [ngClass]="{'disabled': tour.freeSpots == 0}" mat-icon-button (click)="addToCart(tour)">
+                    <button [ngClass]="{'disabled': tour.freeSpots == 0, 'little-room': tour.freeSpots < 4}" mat-icon-button (click)="addToCart(tour)">
                         <mat-icon>add</mat-icon>
                     </button>
                     <button [ngClass]="{'disabled': tour.freeSpots == tour.maxPeople}" mat-icon-button (click)="removeFromCart(tour)">

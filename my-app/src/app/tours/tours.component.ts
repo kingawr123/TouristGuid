@@ -20,6 +20,14 @@ export class ToursComponent implements OnInit{
     this.service.getTours().subscribe(tours => this.tours = tours);
   }
 
+  getTheCheapestTour() {
+    return this.tours.reduce((prev, curr) => prev.price < curr.price ? prev : curr);
+  }
+
+  getTheMostExpensiveTour() {
+    return this.tours.reduce((prev, curr) => prev.price > curr.price ? prev : curr);
+  }
+
   addToCart(tour: Tour) {
     console.log(`Added ${tour.name} to cart`);
     // this.service.reserveTour(tour);

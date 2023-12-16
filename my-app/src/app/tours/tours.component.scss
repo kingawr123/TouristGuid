@@ -28,6 +28,14 @@
     align-items: center;
 }
 
+.cheap{
+    border: 2px solid green;
+}
+
+.expensive{
+    border: 2px solid red;
+}
+
 .tour img{
     width: 60%;
     aspect-ratio: 1/1;
@@ -60,6 +68,19 @@
 .disabled {
     opacity: 0.5;
     pointer-events: none;
+}
+
+.room{
+    display: none;
+    color: red;
+}
+
+.little-room{
+    color: red;
+}
+
+.no-room{
+    display: block;
 }
 // button{
 //     padding: 10px 20px;
