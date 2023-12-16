@@ -1,0 +1,34 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.list-of-tours{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.tour{
+    height: 300px;
+    width: 300px;
+    margin: 0 10px 10px 0;
+    padding: 10px;
+    border: .2px solid #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.tour img{
+    width: 50%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    
+    
+    border-radius: 50%;
+}

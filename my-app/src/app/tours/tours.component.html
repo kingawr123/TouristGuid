@@ -1,0 +1,13 @@
+<div class="container">
+    <h1>Tours</h1>
+    <div class="list-of-tours">
+        <div class="tour" *ngFor="let tour of tours">
+            <img src="{{tour.imageUrl}}" alt="">
+            <h2>{{tour.name}}</h2>
+            <p>{{tour.description}}</p>
+            <p>{{tour.price}}</p>
+        </div>
+    
+    </div>
+    
+</div>
