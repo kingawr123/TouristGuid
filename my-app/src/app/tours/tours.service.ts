@@ -14,28 +14,16 @@ const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/js
 })
 export class ToursService {
   tours: Tour[] = [];
-  // private toursUrl = 'http://localhost:4200/api/tours';
+  private toursUrl = 'api/tours';
   
-  // constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  // getTours(): Observable<Tour[]> {
-  //   return this.http.get<Tour[]>(this.toursUrl)
-  // }
-
-  // addTour(tour: Tour) {
-  //   return this.http.post<Tour>(this.toursUrl, tour, httpOptions);
-  // }
-
-  constructor() {
-    this.tours = MockData.tours;
-  }
-
-  getTours(): Tour[] {
-    return this.tours;
+  getTours(): Observable<Tour[]> {
+    return this.http.get<Tour[]>(this.toursUrl)
   }
 
   addTour(tour: Tour) {
-    this.tours.push(tour);
+    return this.http.post<Tour>(this.toursUrl, tour, httpOptions);
   }
 
   reserveTour(tour: Tour) {
