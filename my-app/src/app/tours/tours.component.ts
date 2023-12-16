@@ -22,21 +22,19 @@ export class ToursComponent implements OnInit{
 
   addToCart(tour: Tour) {
     console.log(`Added ${tour.name} to cart`);
-    this.service.reserveTour(tour);
+    // this.service.reserveTour(tour);
   }
 
   removeFromCart(tour: Tour) {
     console.log(`Removed ${tour.name} from cart`);
-    this.service.deleteReservation(tour);
+    // this.service.deleteReservation(tour);
   }
 
   addTour(tour: Tour) {
-    this.service.addTour(tour);
-    this.service.getTours().subscribe(tours => this.tours = tours);
+    this.service.addTour(tour).subscribe(tours => this.tours.push(tours));
   }
 
   deleteTour(tour: Tour) {
-    this.service.deleteTour(tour);
-    this.service.getTours().subscribe(tours => this.tours = tours);
+    this.service.deleteTour(tour).subscribe(tours => this.tours = this.tours.filter(t => t.id !== tour.id));
   }
 }
