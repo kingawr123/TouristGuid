@@ -19,6 +19,20 @@ export class ToursService {
     this.tours.push(tour);
   }
 
+  reserveTour(tour: Tour) {
+    const index = this.tours.indexOf(tour);
+    if (index !== -1 && this.tours[index].freeSpots > 0){
+      this.tours[index].freeSpots -= 1;
+    }
+  }
+
+  deleteReservation(tour: Tour) {
+    const index = this.tours.indexOf(tour);
+    if (index !== -1 && this.tours[index].freeSpots < this.tours[index].maxPeople) {
+      this.tours[index].freeSpots += 1;
+    }
+  }
+
   deleteTour(tour: Tour) {
     const index = this.tours.indexOf(tour);
     if (index !== -1) {
