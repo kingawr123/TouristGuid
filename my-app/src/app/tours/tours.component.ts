@@ -17,7 +17,8 @@ export class ToursComponent implements OnInit{
   constructor(private service: ToursService) { }
 
   ngOnInit() {
-    this.tours = this.service.getTours()
+    this.tours = this.service.getTours();
+    // this.service.getTours().subscribe(tours => this.tours = tours);
   }
 
   addToCart(tour: Tour) {
@@ -33,10 +34,12 @@ export class ToursComponent implements OnInit{
   addTour(tour: Tour) {
     this.service.addTour(tour);
     this.tours = this.service.getTours();
+    // this.service.getTours().subscribe(tours => this.tours = tours);
   }
 
   deleteTour(tour: Tour) {
     this.service.deleteTour(tour);
     this.tours = this.service.getTours();
+    // this.service.getTours().subscribe(tours => this.tours = tours);
   }
 }
