@@ -1,5 +1,6 @@
 import { InMemoryDbService, RequestInfo } from "angular-in-memory-web-api";
 import { Injectable } from "@angular/core";
+import { Tour } from "../models/Tour";
 
 @Injectable({
     providedIn: 'root'
@@ -7,8 +8,9 @@ import { Injectable } from "@angular/core";
 
 export class InMemoryMockData implements InMemoryDbService {
     constructor() { }
+    
     createDb(){
-        const tours = [
+        const tours: Tour[] = [
             {
                 id: 1,
                 name: "Tour of Italy",
@@ -130,7 +132,7 @@ export class InMemoryMockData implements InMemoryDbService {
                 imageUrl: "https://www.national-geographic.pl/media/cache/slider_big/uploads/media/default/0014/14/austria-z-czego-slynie-ten-europejski-kraj-przewodnik-po-austrii-fot-getty-images.jpeg"
             }
         ];
-        
+
         return {tours};
     }
 }

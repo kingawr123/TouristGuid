@@ -1,5 +1,5 @@
 import { InMemoryWebApiModule } from "angular-in-memory-web-api";
-import { InMemoryMockData } from "./server.service";
+import { InMemoryMockData } from "../services/server.service";
 import { AppComponent } from "./app.component";
 import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";

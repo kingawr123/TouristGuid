@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { MockData } from '../../mock-data';
-import { Tour } from '../../models/Tour';
+import { Tour } from '../models/Tour';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -38,6 +37,16 @@ export class ToursService {
       catchError(this.handleError<Tour>('deleteTour'))
     );
   }
+
+  reserveTour(tour: Tour) {
+    const id = tour.id;
+    const url = `${this.toursUrl}/${id}`;
+    return this.http.put<Tour>(url, tour, httpOptions).pipe(
+      tap(_ => console.log(`Reserved tour with id ${id}`)),
+      catchError(this.handleError<Tour>('reserveTour'))
+    );
+  }
+
   // reserveTour(tour: Tour) {
   //   const index = this.tours.indexOf(tour);
   //   if (index !== -1 && this.tours[index].freeSpots > 0){

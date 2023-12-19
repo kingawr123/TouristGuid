@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ToursService } from './tours.service';
+import { ToursService } from '../../services/tours.service';
 import { Tour } from '../../models/Tour';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
@@ -14,6 +14,8 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class ToursComponent implements OnInit{
   tours: Tour[] = [] 
+  currecy = 'PLN';
+  
   constructor(private service: ToursService) { }
 
   ngOnInit() {
@@ -30,6 +32,8 @@ export class ToursComponent implements OnInit{
 
   addToCart(tour: Tour) {
     console.log(`Added ${tour.name} to cart`);
+    tour.freeSpots -= 1;
+    this.service.reserveTour(tour);
     // this.service.reserveTour(tour);
   }
 

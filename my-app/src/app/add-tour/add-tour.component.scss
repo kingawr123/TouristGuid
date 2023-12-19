@@ -1,0 +1,23 @@
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+}
+mat-form-field {
+    width: 100%;
+}
+
+input.example-right-align {
+    text-align: right;
+}
+
+input.example-right-align::-webkit-inner-spin-button {
+  display: none;
+}
+
+
+
+
