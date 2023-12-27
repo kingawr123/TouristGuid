@@ -36,7 +36,6 @@ export class ToursService {
     );
   }
 
-
   deleteTour(tour: Tour) {
     const id = tour.id;
     const url = `${toursUrl}/${id}`;

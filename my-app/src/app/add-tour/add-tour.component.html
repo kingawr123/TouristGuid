@@ -1,53 +1,46 @@
 <h1>Add New Tour</h1>
 <form (submit)="addTour()">
     <mat-form-field>
-        <input matInput type="text" placeholder="Name" name="tour.name" [(ngModel)]="tour.name">
+        <input matInput type="text" placeholder="Name" name="tour.name" [(ngModel)]="name">
     </mat-form-field>
-    <p>{{tour.name}}</p>
     <mat-form-field>
-        <input matInput type="text" placeholder="Description" name="tour.description" [(ngModel)]="tour.description">
+        <input matInput type="text" placeholder="Description" name="tour.description" [(ngModel)]="description">
     </mat-form-field>
-    <p>{{tour.description}}</p>
     <mat-form-field>
-        <input matInput type="text" placeholder="Country" name="tour.destination" [(ngModel)]="tour.destination">
+        <input matInput type="text" placeholder="Country" name="tour.destination" [(ngModel)]="destination">
     </mat-form-field>
-    <p>{{tour.destination}}</p>
     <mat-form-field>
-        <input matInput type="text" placeholder="Image Url" name="tour.imageUrl" [(ngModel)]="tour.imageUrl">
+        <input matInput type="text" placeholder="Image Url" name="tour.imageUrl" [(ngModel)]="imageUrl">
     </mat-form-field>
-    <p>{{tour.imageUrl}}</p>
     <mat-form-field floatLabel="always">
         <mat-label>Price</mat-label>
-        <input class="example-right-align" matInput type="number" placeholder="Price" name="tour.price" [(ngModel)]="tour.price">
+        <input class="example-right-align" matInput type="number" placeholder="Price" name="tour.price" [(ngModel)]="price">
     </mat-form-field>
-    <p>{{tour.price}}</p>
     <mat-form-field floatLabel="always">
         <mat-label>Max People</mat-label>
-        <input class="example-right-align" matInput type="number" placeholder="Max People" name="tour.maxPeople" [(ngModel)]="tour.maxPeople">
+        <input class="example-right-align" matInput type="number" placeholder="Max People" name="tour.maxPeople" [(ngModel)]="maxPeople">
     </mat-form-field>
-    <p>{{tour.maxPeople}}</p>
     <mat-form-field>
         <mat-label>Start Date</mat-label>
         <input matInput 
             [matDatepicker]="pickerstart"
             [matDatepickerFilter]="filterDate"
             name="tour.startDate"
-            [(ngModel)]="tour.startDate">
+            [(ngModel)]="startDate">
         <mat-datepicker-toggle matIconSuffix [for]="pickerstart"></mat-datepicker-toggle>
         <mat-datepicker #pickerstart></mat-datepicker>
     </mat-form-field>  
-    <p>{{tour.startDate}}</p>
     <mat-form-field>
         <mat-label>End Date</mat-label>
         <input matInput 
             [matDatepicker]="picker"
             [matDatepickerFilter]="filterDate"
             name="tour.endDate"
-            [(ngModel)]="tour.endDate">
+            [(ngModel)]="endDate">
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>   
-    <p>{{tour.endDate}}</p>
+    
     <button type="submit" mat-flat-button color="primary">
         Add Tour
     </button>

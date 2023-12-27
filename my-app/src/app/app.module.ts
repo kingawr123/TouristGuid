@@ -1,5 +1,4 @@
 import { InMemoryWebApiModule } from "angular-in-memory-web-api";
-import { InMemoryMockData } from "../services/server.service";
 import { AppComponent } from "./app.component";
 import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
@@ -18,7 +17,6 @@ import { BrowserModule } from "@angular/platform-browser";
         RouterLink,
         RouterLinkActive,
         HttpClientModule,
-        // InMemoryWebApiModule.forRoot(InMemoryMockData),
     ],
     bootstrap: [AppComponent],
     providers: appConfig.providers,

@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { AddTourComponent } from '../add-tour/add-tour.component';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-tours',
@@ -45,6 +46,8 @@ export class ToursComponent implements OnInit{
   }
 
   deleteTour(tour: Tour) {
-    this.service.deleteTour(tour).subscribe(tours => this.tours = this.tours.filter(t => t.id !== tour.id));
+    this.service.deleteTour(tour).subscribe(tour => this.tours = this.tours.filter(t => t.id !== tour.id));
+    // probably not the best way to do it, but it works
+    window.location.reload();
   }
 }
