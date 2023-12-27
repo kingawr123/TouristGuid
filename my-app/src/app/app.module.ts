@@ -18,7 +18,7 @@ import { BrowserModule } from "@angular/platform-browser";
         RouterLink,
         RouterLinkActive,
         HttpClientModule,
-        InMemoryWebApiModule.forRoot(InMemoryMockData),
+        // InMemoryWebApiModule.forRoot(InMemoryMockData),
     ],
     bootstrap: [AppComponent],
     providers: appConfig.providers,

@@ -3,23 +3,29 @@
     <mat-form-field>
         <input matInput type="text" placeholder="Name" name="tour.name" [(ngModel)]="tour.name">
     </mat-form-field>
+    <p>{{tour.name}}</p>
     <mat-form-field>
         <input matInput type="text" placeholder="Description" name="tour.description" [(ngModel)]="tour.description">
     </mat-form-field>
+    <p>{{tour.description}}</p>
     <mat-form-field>
         <input matInput type="text" placeholder="Country" name="tour.destination" [(ngModel)]="tour.destination">
     </mat-form-field>
+    <p>{{tour.destination}}</p>
     <mat-form-field>
         <input matInput type="text" placeholder="Image Url" name="tour.imageUrl" [(ngModel)]="tour.imageUrl">
     </mat-form-field>
+    <p>{{tour.imageUrl}}</p>
     <mat-form-field floatLabel="always">
         <mat-label>Price</mat-label>
         <input class="example-right-align" matInput type="number" placeholder="Price" name="tour.price" [(ngModel)]="tour.price">
     </mat-form-field>
+    <p>{{tour.price}}</p>
     <mat-form-field floatLabel="always">
         <mat-label>Max People</mat-label>
         <input class="example-right-align" matInput type="number" placeholder="Max People" name="tour.maxPeople" [(ngModel)]="tour.maxPeople">
     </mat-form-field>
+    <p>{{tour.maxPeople}}</p>
     <mat-form-field>
         <mat-label>Start Date</mat-label>
         <input matInput 
@@ -30,6 +36,7 @@
         <mat-datepicker-toggle matIconSuffix [for]="pickerstart"></mat-datepicker-toggle>
         <mat-datepicker #pickerstart></mat-datepicker>
     </mat-form-field>  
+    <p>{{tour.startDate}}</p>
     <mat-form-field>
         <mat-label>End Date</mat-label>
         <input matInput 
@@ -40,6 +47,8 @@
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>   
-
-    <input type="submit" value="Add Tour">
+    <p>{{tour.endDate}}</p>
+    <button type="submit" mat-flat-button color="primary">
+        Add Tour
+    </button>
 </form>

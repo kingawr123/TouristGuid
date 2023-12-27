@@ -1,28 +1,36 @@
 import { Injectable } from '@angular/core';
-import { Tour } from '../models/Tour';
-
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError, map, tap, filter } from 'rxjs/operators';
 import { of } from 'rxjs';
 
+import { Tour } from '../models/Tour';
+
 const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' })};
+const toursUrl = 'http://localhost:3000/api/tours';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class ToursService {
-  private toursUrl = 'api/tours';
   
   constructor(private http: HttpClient) { }
 
   getTours(): Observable<Tour[]> {
-    return this.http.get<Tour[]>(this.toursUrl)
+    return this.http.get<Tour[]>(toursUrl)
+  }
+  
+  getTour(id: number): Observable<Tour> {
+    const url = `${toursUrl}/${id}`;
+    return this.http.get<Tour>(url).pipe(
+      tap(_ => console.log(`fetched tour with id ${id}`)),
+      catchError(this.handleError<Tour>(`getTour id=${id}`))
+    );
   }
 
   addTour(tour: Tour) {
-    return this.http.post<Tour>(this.toursUrl, tour, httpOptions).pipe(
+    return this.http.post<Tour>(toursUrl, tour, httpOptions).pipe(
       tap(t => console.log(`Added tour with id ${t.id}`)),
       catchError(this.handleError<Tour>('addTour'))
     );
@@ -31,21 +39,22 @@ export class ToursService {
 
   deleteTour(tour: Tour) {
     const id = tour.id;
-    const url = `${this.toursUrl}/${id}`;
+    const url = `${toursUrl}/${id}`;
     return this.http.delete<Tour>(url, httpOptions).pipe(
       tap(_ => console.log(`Deleted tour with id ${id}`)),
       catchError(this.handleError<Tour>('deleteTour'))
     );
   }
 
-  reserveTour(tour: Tour) {
+  updateTour(tour: Tour) {
     const id = tour.id;
-    const url = `${this.toursUrl}/${id}`;
+    const url = `${toursUrl}/${id}`;
     return this.http.put<Tour>(url, tour, httpOptions).pipe(
-      tap(_ => console.log(`Reserved tour with id ${id}`)),
+      tap(_ => console.log(`updated tour with id ${id}`)),
       catchError(this.handleError<Tour>('reserveTour'))
     );
   }
+
 
   // reserveTour(tour: Tour) {
   //   const index = this.tours.indexOf(tour);

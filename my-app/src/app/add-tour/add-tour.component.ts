@@ -26,8 +26,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 })
 
 export class AddTourComponent {
-  basicImgUrl: string = 'https://www.travelandleisure.com/thmb/aKGPQXqw0jHSLjgYhjnpgD__s7g=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/plane-data-BUSYROUTES1217-f4f84b08d47f4951b11c148cee2c3dea.jpg';
-  tour: Tour = { 
+  tour: Tour = {
     id: 0,
     name: '',
     description: '',
@@ -39,11 +38,36 @@ export class AddTourComponent {
     freeSpots: 0,
     imageUrl: ''
   };
+  
+  basicImgUrl: string = 'https://www.travelandleisure.com/thmb/aKGPQXqw0jHSLjgYhjnpgD__s7g=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/plane-data-BUSYROUTES1217-f4f84b08d47f4951b11c148cee2c3dea.jpg';
+  id: number = 0;
+  name: string = '';
+  description: string = '';
+  destination: string = '';
+  startDate: Date = new Date();
+  endDate: Date = new Date();
+  price: number = 0;
+  maxPeople: number = 0;
+  freeSpots: number = 0;
+  imageUrl: string = '';
 
   constructor(private service: ToursService) { }
 
   addTour() {
-    this.service.addTour(this.tour).subscribe(tour => this.tour = tour);
+    const len = 10;
+    const tour: Tour = { 
+      id: len+1,
+      name: this.name,
+      description: '',
+      destination: '',
+      startDate: new Date(),
+      endDate: new Date(),
+      price: 0,
+      maxPeople: 0,
+      freeSpots: 0,
+      imageUrl: ''
+    };
+    this.service.addTour(tour).subscribe(tour =>tour = tour);
   }
 
   filterDate: (date: Date | null) => boolean = 

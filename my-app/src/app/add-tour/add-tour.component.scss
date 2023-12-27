@@ -4,10 +4,10 @@ form {
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-
+    padding: 20px;
 }
 mat-form-field {
-    width: 100%;
+    width: 90%;
 }
 
 input.example-right-align {
