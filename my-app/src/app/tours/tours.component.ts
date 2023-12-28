@@ -6,11 +6,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { AddTourComponent } from '../add-tour/add-tour.component';
 import { filter } from 'rxjs';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-tours',
   standalone: true,
-  imports: [CommonModule, MatIconModule, MatButtonModule, AddTourComponent],
+  imports: [CommonModule, MatIconModule, MatButtonModule, AddTourComponent, RouterLink],
   templateUrl: './tours.component.html',
   styleUrl: './tours.component.scss'
 })

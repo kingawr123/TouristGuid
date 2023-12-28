@@ -1,7 +1,7 @@
 <div class="container">
     <h1>Available Tours</h1>
     <div class="list-of-tours">
-        <div class="tour" [ngClass]="{'cheap': tour === getTheCheapestTour(), 'expensive': tour === getTheMostExpensiveTour()}" *ngFor="let tour of tours">
+        <div [routerLink]="['details', tour.id]" class="tour" [ngClass]="{'cheap': tour === getTheCheapestTour(), 'expensive': tour === getTheMostExpensiveTour()}" *ngFor="let tour of tours">
             <button id="delete" mat-icon-button (click)="deleteTour(tour)">
                 <mat-icon>delete</mat-icon>
             </button>
