@@ -6,6 +6,7 @@ import { RouterLink, RouterLinkActive, RouterModule, RouterOutlet } from "@angul
 import { CommonModule } from "@angular/common";
 import { appConfig } from "./app.config";
 import { BrowserModule } from "@angular/platform-browser";
+import { GoogleMapsModule } from '@angular/google-maps';
 
 @NgModule({
     declarations: [AppComponent],
@@ -17,6 +18,7 @@ import { BrowserModule } from "@angular/platform-browser";
         RouterLink,
         RouterLinkActive,
         HttpClientModule,
+        GoogleMapsModule
     ],
     bootstrap: [AppComponent],
     providers: appConfig.providers,

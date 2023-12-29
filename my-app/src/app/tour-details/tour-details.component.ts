@@ -1,22 +1,32 @@
-import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { CommonModule, } from '@angular/common';
+import { AfterContentInit, Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ToursService } from '../../services/tours.service';
 import { Tour } from '../../models/Tour';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink, Router } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 @Component({
   selector: 'app-tour-details',
   standalone: true,
-  imports: [CommonModule],
+  imports: [
+    CommonModule, 
+    MatIconModule, 
+    MatButtonModule, 
+    RouterLink, 
+    GoogleMapsModule
+  ],
   templateUrl: './tour-details.component.html',
-  styleUrl: './tour-details.component.scss'
+  styleUrl: './tour-details.component.scss',
+  encapsulation: ViewEncapsulation.None
 })
-export class TourDetailsComponent implements OnInit{
+export class TourDetailsComponent implements OnInit, AfterContentInit{
   tour: Tour = {
     id: 0,
     name: '',
     description: '',
-    destination: '',
+    destination: 'Poland',
     startDate: new Date(),
     endDate: new Date(),
     price: 0,
@@ -24,11 +34,56 @@ export class TourDetailsComponent implements OnInit{
     freeSpots: 0,
     imageUrl: ''
   }
-  constructor(private service: ToursService, private route: ActivatedRoute) { }
+  mapOptions: google.maps.MapOptions = {
+    center: {lat: 0, lng: 0},
+    zoom: 8,
+    disableDefaultUI: true
+  };
+
+  constructor(private service: ToursService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.service.getTour(params['id']).subscribe(tour => this.tour = tour);
     });
+  }
+
+  ngAfterContentInit() {
+    this.getCoordinates();
+  }
+
+  getCoordinates() {
+    console.log(this.tour.destination);
+    var geocoder = new google.maps.Geocoder();
+    geocoder.geocode({address: this.tour.destination}, (results, status) => {
+      console.log(status);
+      console.log(results);
+      if (status === 'OK') {
+        if (results){
+          this.mapOptions.center = results[0].geometry.location;
+        }
+      }
+      else {
+        console.log('Geocode was not successful for the following reason: ' + status);
+      }
+    }
+    );
+  }
+
+  goBack(){
+    this.router.navigate(['/tours']);
+  }
+  
+  addToCart(tour: Tour) {
+    console.log(`Added ${tour.name} to cart`);
+    tour.freeSpots -= 1;
+    this.service.updateTour(tour);
+  }
+
+  removeFromCart(tour: Tour) {
+    tour.freeSpots += 1;
+    this.service.updateTour(tour);
+    console.log(`Removed ${tour.name} from cart`);
+    
   }
 }

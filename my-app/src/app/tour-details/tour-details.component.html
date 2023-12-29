@@ -1,2 +1,24 @@
-<p>tour-details works!</p>
-<p>{{tour.name}}</p>
+<a (click)="goBack()"><mat-icon class="back-arrow">keyboard_return</mat-icon></a>
+<div class="main-container">
+    <div class="left sector">
+        <img [src]="tour.imageUrl">
+    </div>
+    <div class="right sector">
+        <h1>{{tour.name}}</h1>
+        <p>{{tour.startDate | date:'dd/MM/yyyy'}} - {{tour.endDate | date:'dd/MM/yyyy'}}</p>
+        <p>{{tour.description}}</p>
+        <p>{{tour.destination}}</p>
+        <h2>Price: {{tour.price}} PLN</h2>
+        <div class="buttons">
+            <button [ngClass]="{'disabled': tour.freeSpots == 0, 'little-room': tour.freeSpots < 4}" mat-icon-button (click)="addToCart(tour)">
+                <mat-icon>add</mat-icon>
+            </button>
+            <button [ngClass]="{'disabled': tour.freeSpots == tour.maxPeople}" mat-icon-button (click)="removeFromCart(tour)">
+                <mat-icon>remove</mat-icon>
+            </button>
+        </div>
+        <div class="map">
+            <google-map [options]="mapOptions"></google-map>
+        </div>
+    </div>
+</div>
