@@ -6,12 +6,14 @@ import { ActivatedRoute, RouterLink, Router } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { ReviewsComponent } from './reviews/reviews.component';
 
 @Component({
   selector: 'app-tour-details',
   standalone: true,
   imports: [
     CommonModule, 
+    ReviewsComponent,
     MatIconModule, 
     MatButtonModule, 
     RouterLink, 
@@ -35,7 +37,7 @@ export class TourDetailsComponent implements OnInit, AfterContentInit{
     imageUrl: ''
   }
   mapOptions: google.maps.MapOptions = {
-    center: {lat: 0, lng: 0},
+    center: {lat: 52, lng: 21.9},
     zoom: 8,
     disableDefaultUI: true
   };

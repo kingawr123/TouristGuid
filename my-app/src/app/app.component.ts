@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'my-app';
+
+  mapOptions: google.maps.MapOptions = {
+    center: {lat: 52.25, lng: 20.99},
+    zoom: 12,
+  };
 }

@@ -8,9 +8,9 @@ main{
     align-items: center;
 }
 
-.outlet {
-    min-height: 82vh;
-}
+// .outlet {
+//     min-height: 82vh;
+// }
 
 nav{
     width: 100%;
@@ -38,18 +38,79 @@ nav a {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+nav p {
+    margin: 0 20px;
+    padding-right: 10px;
+    border-right: 1px solid #000;
+}
+
+nav .bold {
+    font-weight: bolder;
+
+}
 .hg{
     font-weight: 700;
     font-size: large;
 }
 
 footer{
+    position: relative;
+    bottom: 0;
     width: 100%;
-    height: 8vh;
+    min-height: 8vh;
     background-color: #2a2727;
-    color: #fff;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    padding: 10px 0;
+    overflow: hidden;
 }
+
+footer .left-side {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+footer .copy{
+    margin: 0 30px;
+}
+
+footer .contact p{
+    margin: 9px 2px;
+    font-size: 0.9em;
+}
+
+footer .contact {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 10px 20px;
+    padding-left: 10px;
+    border-left: 1px solid #fff;
+}
+
+footer .map-footer {
+    margin: 10px 30px 10px 0;
+}
+
+
+@media screen and (max-width: 980px) {
+    footer {
+        flex-direction: column-reverse;
+    }
+
+    footer .map-footer {
+        margin: 0;
+    }
+
+    footer .left-side {
+        width: 100%;
+    }
+}
+

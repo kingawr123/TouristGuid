@@ -8,6 +8,6 @@ import { Component } from '@angular/core';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-  title = 'Welcome to Tourist Guide!';
+  title = 'World Explorer!';
   description = 'This is a simple tourist guide application built with Angular';
 }

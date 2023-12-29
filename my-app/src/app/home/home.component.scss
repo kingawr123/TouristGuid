@@ -1,4 +1,51 @@
 header {
     padding: 20px 0;
     text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+header .left-header {
+    width: 40%;
+}
+
+header .plane-bg {
+    z-index: -2;
+    position: absolute;
+    left: 30vw;
+    width: 78vh;
+    height: 70vh;
+    border-radius: 50%;
+    background-color: rgb(231, 215, 193);
+}
+
+header img {
+    position: absolute;
+    z-index: -1;
+    width: 45vh;
+    min-height: 300px;
+    min-width: 300px;
+    height: 45vh; 
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+@media screen and (max-width: 980px) {
+    header {
+        flex-direction: column;
+    }
+
+    header .left-header {
+        width: 100%;
+    }
+
+    header .plane-bg {
+        left: 10px ;
+    }
+
+    header img {
+        display: none;
+    }
 }

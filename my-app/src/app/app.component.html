@@ -1,5 +1,6 @@
 <main>
   <nav>
+    <p><span class="bold">World</span>Explorer</p>
     <a class="hg" routerLink="/home">HOME</a>
     <a routerLink="/tours">Tours</a>
     <a routerLink="/addTour">Add Tour</a>
@@ -8,7 +9,17 @@
     <router-outlet></router-outlet>
   </section>
   <footer>
-
+    <div class="left-side">
+      <p class="copy">WorldExplorer &copy; 2023</p>
+      <div class="contact">
+        <p>phone: +48 937 657 268</p>
+        <p>email: world.explorer.contact&#64;gmail.com</p>
+        <p>ul. WorldExplorer 1, 21-037 Warsaw, Poland</p>
+      </div>
+    </div>
+    <div class="map-footer">
+      <google-map [options]="mapOptions"></google-map>
+    </div>
   </footer>
 </main>
 

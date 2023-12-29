@@ -4,11 +4,11 @@
         <img [src]="tour.imageUrl">
     </div>
     <div class="right sector">
-        <h1>{{tour.name}}</h1>
+        <h3>{{tour.name}}</h3>
         <p>{{tour.startDate | date:'dd/MM/yyyy'}} - {{tour.endDate | date:'dd/MM/yyyy'}}</p>
         <p>{{tour.description}}</p>
         <p>{{tour.destination}}</p>
-        <h2>Price: {{tour.price}} PLN</h2>
+        <h3>Price: {{tour.price}} PLN</h3>
         <div class="buttons">
             <button [ngClass]="{'disabled': tour.freeSpots == 0, 'little-room': tour.freeSpots < 4}" mat-icon-button (click)="addToCart(tour)">
                 <mat-icon>add</mat-icon>
@@ -22,3 +22,4 @@
         </div>
     </div>
 </div>
+<app-reviews></app-reviews>

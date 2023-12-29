@@ -1,10 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
 h1 {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 2.5rem;
+    font-size: 4.5rem;
     color: #333;
     text-align: center;
     font-weight: 400;
+}
+
+h2 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #333;
+    text-align: center;
+    font-size: 5rem;
+}
+
+h3 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #333;
+    text-align: center;
+    font-size: 2rem;
+
+}
+h1 span {
+    font-weight: 700;
 }
 
 p {
@@ -15,3 +33,12 @@ p {
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+footer p {
+    color: #fff;
+}
+
+footer .map-footer google-map .map-container{
+    width: 500px !important;
+    height: 200px !important;
+}
