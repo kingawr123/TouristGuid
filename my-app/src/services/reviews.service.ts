@@ -21,11 +21,11 @@ export class ReviewsService {
     return this.http.get<Review[]>(url)
   }
 
-  // addReview(review: Review) {
-  //   const url = `${reviewUrl}/${review.tour}`;
-  //   return this.http.post<Review>(url, review, httpOptions).pipe(
-  //     tap(t => console.log(`Added review to tour with id ${t.tour}`))  
-  //   );
-  // }
+  addReview(review: Review) {
+    const url = `${reviewUrl}/${review.tour}`;
+    return this.http.post<Review>(url, review, httpOptions).pipe(
+      tap(t => console.log(`Added review to tour with id ${t.tour}`))  
+    );
+  }
 
 }

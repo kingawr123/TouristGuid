@@ -1,2 +1,16 @@
-<button (click)="printReviews()">Print</button>
-<h3>Add review</h3>
+<app-add-review></app-add-review>
+
+<div class="list-of-review">
+    <h2>Reviews</h2>
+    <p *ngIf="reviews.length == 0"> No reviews added yet</p>
+    <div class="review" *ngFor="let review of reviews">
+        <div class="top-review">
+            <p>{{ review.username }}</p>
+            <p><mat-icon>star</mat-icon>{{ review.rating }}</p>
+        </div>
+        <div class="bottom-review">
+            <p>{{ review.opinion}}</p>
+        </div>
+    </div>
+</div>
+

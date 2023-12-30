@@ -43,7 +43,7 @@ export class AddTourComponent {
   addTour() {
 
     const tour: Tour = { 
-      id: 0,
+      id: '',
       name: this.name,
       description: this.description,
       destination: this.destination,

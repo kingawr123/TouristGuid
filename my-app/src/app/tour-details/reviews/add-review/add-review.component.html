@@ -1,0 +1,20 @@
+<h3>Add Review</h3>
+<form (submit)="addReview()">
+    <div class="top-forms">
+        <mat-form-field appearance="outline">
+            <input matInput type="text" placeholder="Username" name="review.username" [(ngModel)]="username">
+        </mat-form-field>
+        <mat-form-field floatLabel="always" appearance="outline">
+            <mat-label>Rating</mat-label>
+            <input min="1" max="5" class="example-right-align" matInput type="number" placeholder="Rating" name="review.rating" [(ngModel)]="rating">
+        </mat-form-field>
+    </div>
+
+    <mat-form-field id="review" appearance="outline">
+        <input matInput type="text" placeholder="Review ( 10 - 500 words)" name="review.opinion" [(ngModel)]="opinion">
+    </mat-form-field>
+
+    <button type="submit" mat-flat-button color="primary">
+        Post
+    </button>   
+</form>

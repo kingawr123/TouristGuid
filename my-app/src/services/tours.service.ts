@@ -5,6 +5,7 @@ import { catchError, map, tap, filter } from 'rxjs/operators';
 import { of } from 'rxjs';
 
 import { Tour } from '../models/Tour';
+import { Rate } from '../models/Rate';
 
 const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' })};
 const toursUrl = 'http://localhost:3000/api/tours';
@@ -20,8 +21,16 @@ export class ToursService {
   getTours(): Observable<Tour[]> {
     return this.http.get<Tour[]>(toursUrl)
   }
+
+  getTourRating(id: string): Observable<Rate[]> {
+    const url = `${toursUrl}/${id}/rating`;
+    return this.http.get<Rate[]>(url).pipe(
+      tap(_ => console.log(`fetched rating for tour with id ${id}`)),
+      catchError(this.handleError<Rate[]>(`getTourRating id=${id}`))
+    );
+  }
   
-  getTour(id: number): Observable<Tour> {
+  getTour(id: string): Observable<Tour> {
     const url = `${toursUrl}/${id}`;
     return this.http.get<Tour>(url).pipe(
       tap(_ => console.log(`fetched tour with id ${id}`)),

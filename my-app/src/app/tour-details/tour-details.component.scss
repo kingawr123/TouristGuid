@@ -6,7 +6,16 @@
     align-items: center;
     flex-direction: column;
     margin: 0;
-    padding: 0;}
+    padding: 0;
+}
+
+.star{
+    color: rgb(255, 218, 9);
+}
+
+.show-map{
+   display: block;
+}
 
 .sector{
     width: 100%;
@@ -38,6 +47,7 @@ p{
 
 .map{
     width: 100%;
+    display: none;
 }
 
 google-map .map-container{
@@ -66,6 +76,10 @@ google-map .map-container{
 .back-arrow{
     margin: 10px 0 10px 30px;
     cursor: pointer;
+}
+
+app-reviews {
+    width: 98vw;
 }
 
 @media screen and (max-width: 890px) {

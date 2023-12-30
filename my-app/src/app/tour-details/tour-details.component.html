@@ -5,6 +5,7 @@
     </div>
     <div class="right sector">
         <h3>{{tour.name}}</h3>
+        <p><mat-icon class="star">star</mat-icon>{{tourRating.avgRating}}</p>
         <p>{{tour.startDate | date:'dd/MM/yyyy'}} - {{tour.endDate | date:'dd/MM/yyyy'}}</p>
         <p>{{tour.description}}</p>
         <p>{{tour.destination}}</p>
@@ -17,9 +18,9 @@
                 <mat-icon>remove</mat-icon>
             </button>
         </div>
-        <div class="map">
+        <!-- <div id="map" class="map" [ngClass]="{'show-map': mapReady==true}">
             <google-map [options]="mapOptions"></google-map>
-        </div>
+        </div> -->
     </div>
 </div>
 <app-reviews></app-reviews>

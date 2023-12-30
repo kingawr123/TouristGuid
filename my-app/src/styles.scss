@@ -1,17 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 h1 {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 4.5rem;
     color: #333;
     text-align: center;
-    font-weight: 400;
+    font-size: 5rem;
 }
 
 h2 {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 4.5rem;
     color: #333;
     text-align: center;
-    font-size: 5rem;
+    font-weight: 400;
 }
 
 h3 {
@@ -31,7 +31,7 @@ p {
     color: #333;
     font-weight: 400;
 }
-html, body { height: 100%; }
+html, body { height: 100%; overflow-x: hidden;}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 footer p {

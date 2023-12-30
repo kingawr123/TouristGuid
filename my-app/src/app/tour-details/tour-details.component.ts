@@ -1,5 +1,5 @@
 import { CommonModule, } from '@angular/common';
-import { AfterContentInit, Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ToursService } from '../../services/tours.service';
 import { Tour } from '../../models/Tour';
 import { ActivatedRoute, RouterLink, Router } from '@angular/router';
@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { ReviewsComponent } from './reviews/reviews.component';
+import { Rate } from '../../models/Rate';
 
 @Component({
   selector: 'app-tour-details',
@@ -23,12 +24,12 @@ import { ReviewsComponent } from './reviews/reviews.component';
   styleUrl: './tour-details.component.scss',
   encapsulation: ViewEncapsulation.None
 })
-export class TourDetailsComponent implements OnInit, AfterContentInit{
+export class TourDetailsComponent implements OnInit{
   tour: Tour = {
-    id: 0,
+    id: '',
     name: '',
     description: '',
-    destination: 'Poland',
+    destination: '',
     startDate: new Date(),
     endDate: new Date(),
     price: 0,
@@ -36,6 +37,14 @@ export class TourDetailsComponent implements OnInit, AfterContentInit{
     freeSpots: 0,
     imageUrl: ''
   }
+
+  tourRating: Rate = {
+    id: '',
+    avgRating: 0
+  };
+  
+  mapReady: boolean = false;
+
   mapOptions: google.maps.MapOptions = {
     center: {lat: 52, lng: 21.9},
     zoom: 8,
@@ -46,28 +55,36 @@ export class TourDetailsComponent implements OnInit, AfterContentInit{
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.service.getTour(params['id']).subscribe(tour => this.tour = tour);
+      this.service.getTour(params['id']).subscribe(tour => this.handleInit(tour));
+      this.service.getTourRating(params['id']).subscribe(rating => this.tourRating = rating[0]); //this.tourRating = rating
     });
   }
 
-  ngAfterContentInit() {
-    this.getCoordinates();
+  handleInit(t: Tour){
+    this.tour = t;
+    this.getCoordinates(t);
   }
 
-  getCoordinates() {
-    console.log(this.tour.destination);
+  storeResult(lat: number, lng: number) {
+    this.mapOptions.center = {lat: lat, lng: lng};
+    this.mapReady = true;
+  }
+
+  getCoordinates(t: Tour) {
     var geocoder = new google.maps.Geocoder();
-    geocoder.geocode({address: this.tour.destination}, (results, status) => {
-      console.log(status);
-      console.log(results);
+    var lat = 0;
+    var lng = 0;
+    geocoder.geocode({address: t.destination}, (results, status) => {
       if (status === 'OK') {
         if (results){
-          this.mapOptions.center = results[0].geometry.location;
+          lat = results[0].geometry.location.lat();
+          lng = results[0].geometry.location.lng();
         }
       }
       else {
         console.log('Geocode was not successful for the following reason: ' + status);
       }
+      this.storeResult(lat, lng);
     }
     );
   }

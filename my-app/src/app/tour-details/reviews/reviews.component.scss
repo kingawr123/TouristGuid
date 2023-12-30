@@ -1,0 +1,56 @@
+app-add-review {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.list-of-review {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    box-sizing: border-box;
+
+}
+
+.review {
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: rgb(249, 249, 249);
+}
+
+.top-review {
+    width: 100%;
+    padding: 10px;   
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bottom-review {
+    width: 96%; 
+    padding: 2%;
+    -webkit-box-shadow: 0px 9px 25px -4px rgba(212, 212, 212, 1);
+    -moz-box-shadow: 0px 9px 25px -4px rgba(212, 212, 212, 1);
+    box-shadow: 0px 9px 25px -4px rgba(212, 212, 212, 1);
+}
+
+.top-review p {
+    margin-right: 20px;
+}
+
+mat-icon {
+    color: rgb(255, 218, 9);
+}

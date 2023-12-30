@@ -17,7 +17,7 @@ import { RouterLink } from '@angular/router';
 })
 export class ToursComponent implements OnInit{
   tours: Tour[] = [] 
-  currecy = 'PLN';
+  currency = 'PLN';
   
   constructor(private service: ToursService) { }
 
