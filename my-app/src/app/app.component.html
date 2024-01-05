@@ -4,6 +4,13 @@
     <a class="hg" routerLink="/home">HOME</a>
     <a routerLink="/tours">Tours</a>
     <a routerLink="/addTour">Add Tour</a>
+    <mat-form-field>
+      <mat-select [(value)]="new_currency" (selectionChange)="updateCurrency()">
+        <mat-option value="PLN">PLN</mat-option>
+        <mat-option value="EUR">EUR</mat-option>
+        <mat-option value="USD">USD</mat-option>
+      </mat-select>
+    </mat-form-field>
   </nav>
   <section class="outlet">
     <router-outlet></router-outlet>

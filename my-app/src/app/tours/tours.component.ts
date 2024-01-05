@@ -5,8 +5,8 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { AddTourComponent } from '../add-tour/add-tour.component';
-import { filter } from 'rxjs';
 import { RouterLink } from '@angular/router';
+import { Currency, Currencies, CurrentCurrency } from "../../utils/constants";
 
 @Component({
   selector: 'app-tours',
@@ -17,7 +17,7 @@ import { RouterLink } from '@angular/router';
 })
 export class ToursComponent implements OnInit{
   tours: Tour[] = [] 
-  currency = 'PLN';
+  currency = CurrentCurrency;
   
   constructor(private service: ToursService) { }
 
@@ -33,13 +33,15 @@ export class ToursComponent implements OnInit{
     return this.tours.reduce((prev, curr) => prev.price > curr.price ? prev : curr);
   }
 
-  addToCart(tour: Tour) {
+  addToCart(tour: Tour, event: any) {
+    event.stopPropagation();
     console.log(`Added ${tour.name} to cart`);
     tour.freeSpots -= 1;
     this.service.updateTour(tour);
   }
 
-  removeFromCart(tour: Tour) {
+  removeFromCart(tour: Tour, event: any) {
+    event.stopPropagation();
     tour.freeSpots += 1;
     this.service.updateTour(tour);
     console.log(`Removed ${tour.name} from cart`);

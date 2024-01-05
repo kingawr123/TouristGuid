@@ -9,7 +9,7 @@
         <p>{{tour.startDate | date:'dd/MM/yyyy'}} - {{tour.endDate | date:'dd/MM/yyyy'}}</p>
         <p>{{tour.description}}</p>
         <p>{{tour.destination}}</p>
-        <h3>Price: {{tour.price}} PLN</h3>
+        <h3>Price: {{tour.price / currency.multiplier | number: '1.0-2'}} {{ currency.name }}</h3>
         <div class="buttons">
             <button [ngClass]="{'disabled': tour.freeSpots == 0, 'little-room': tour.freeSpots < 4}" mat-icon-button (click)="addToCart(tour)">
                 <mat-icon>add</mat-icon>

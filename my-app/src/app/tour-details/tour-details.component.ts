@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { ReviewsComponent } from './reviews/reviews.component';
 import { Rate } from '../../models/Rate';
+import { Currency, CurrentCurrency } from '../../utils/constants';
 
 @Component({
   selector: 'app-tour-details',
@@ -50,6 +51,8 @@ export class TourDetailsComponent implements OnInit{
     zoom: 8,
     disableDefaultUI: true
   };
+
+  currency: Currency = CurrentCurrency;
 
   constructor(private service: ToursService, private route: ActivatedRoute, private router: Router) { }
 

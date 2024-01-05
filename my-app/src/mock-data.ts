@@ -3,7 +3,7 @@ import { Tour } from "./models/Tour";
 export class MockData{
     public static tours: Tour[] = [
         {
-            id: 1,
+            id: '1',
             name: "Tour of Italy",
             description: "A tour of Italy",
             destination: "Italy",
@@ -15,7 +15,7 @@ export class MockData{
             imageUrl: "https://www.ourescapeclause.com/wp-content/uploads/2020/09/shutterstock_1037347711-768x512.jpg"
         },
         {
-            id: 2,
+            id: '2',
             name: "Tour of France",
             description: "A tour of France",
             destination: "France",
@@ -27,7 +27,7 @@ export class MockData{
             imageUrl: "https://www.completefrance.com/wp-content/uploads/2022/04/paris-the-capital-of-france-762d67b1-670x377.jpg"
         },
         {
-            id: 3,
+            id: '3',
             name: "Tour of Spain",
             description: "A tour of Spain",
             destination: "Spain",
@@ -39,7 +39,7 @@ export class MockData{
             imageUrl: "https://www.civitatis.com/blog/wp-content/uploads/2023/07/shutterstock_557625622-1920x1289.jpg"
         },
         {
-            id: 4,
+            id: '4',
             name: "Tour of Germany",
             description: "A tour of Germany",
             destination: "Germany",
@@ -51,7 +51,7 @@ export class MockData{
             imageUrl: "https://www.travelandleisure.com/thmb/2WyEBfzLSAW7HgqiuC1-qbySpA8=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/TAL-rothenburg-ob-der-tauber-PLACESGER0623-a9378cf8ee2b45be96e72e662597a036.jpg"
         },
         {
-            id: 5,
+            id: '5',
             name: "Tour of Greece",
             description: "A tour of Greece",
             destination: "Greece",
@@ -63,7 +63,7 @@ export class MockData{
             imageUrl: "https://static.independent.co.uk/2023/04/13/13/iStock-475124388.jpg?quality=75&width=990&crop=3%3A2%2Csmart&auto=webp"
         },
         {
-            id: 6,
+            id: '6',
             name: "Tour of England",
             description: "A tour of England",
             destination: "England",
@@ -75,7 +75,7 @@ export class MockData{
             imageUrl: "https://www.worldatlas.com/r/w960-q80/upload/c7/28/32/untitled-design-207.jpg"
         },
         {
-            id: 7,
+            id: '7',
             name: "Tour of Scotland",
             description: "A tour of Scotland",
             destination: "Scotland",
@@ -87,7 +87,7 @@ export class MockData{
             imageUrl: "https://media.gadventures.com/media-server/cache/74/93/7493a191de5a82c29b247c22c088564b.jpg"
         },
         {
-            id: 8,
+            id: '8',
             name: "Tour of Ireland",
             description: "A tour of Ireland",
             destination: "Ireland",
@@ -99,7 +99,7 @@ export class MockData{
             imageUrl: "https://wszib.edu.pl/multis/wp-content/uploads/2021/07/666-300x300.png"
         },
         {
-            id: 9,
+            id: '9',
             name: "Tour of Switzerland",
             description: "A tour of Switzerland",
             destination: "Switzerland",
@@ -111,7 +111,7 @@ export class MockData{
             imageUrl: "https://www.travelandleisure.com/thmb/jy_x15g-12fGtgnCynHz_XhNQBs=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/TAL-swiss-national-park-PLACESSWITZERLAND1023-a9bcfae7dfb444228ea44ce9b224669d.jpg"
         },
         {
-            id: 10,
+            id: '10',
             name: "Tour of Austria",
             description: "A tour of Austria",
             destination: "Austria",

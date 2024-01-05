@@ -25,23 +25,37 @@ header .right-header {
 }
 
 header img {
-    width: 100%;
-    height: 100%; 
+    position: relative;
+    width: 100%; 
+    height: 82vh;
     object-fit: cover;
 }
 
 @media screen and (max-width: 980px) {
     header {
-        flex-direction: column;
+        width: 99vw;
+        margin: 0;
         padding: 0;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column-reverse;
     }
 
-    .left-header {
+    header .left-header {
         width: 100%;
     }
 
-    .right-header {
+    header .right-header {
         width: 100%;
+    }
+
+    header img {
+        position: relative;
+        width: 100%; 
+        height: 50vh;
+        object-fit: cover;
     }
 
 }

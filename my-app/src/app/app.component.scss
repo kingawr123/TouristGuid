@@ -46,8 +46,17 @@ nav p {
 
 nav .bold {
     font-weight: bolder;
-
 }
+
+mat-form-field {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    width: 100px;;
+}
+
+
+
 .hg{
     font-weight: 700;
     font-size: large;
