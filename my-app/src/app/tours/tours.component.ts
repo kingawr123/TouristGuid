@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { AddTourComponent } from '../add-tour/add-tour.component';
 import { RouterLink } from '@angular/router';
 import { Currency, Currencies, CurrentCurrency } from "../../utils/constants";
+import { ReservedSpots } from '../../models/ReservedSpots';
 
 @Component({
   selector: 'app-tours',
@@ -16,13 +17,27 @@ import { Currency, Currencies, CurrentCurrency } from "../../utils/constants";
   styleUrl: './tours.component.scss'
 })
 export class ToursComponent implements OnInit{
-  tours: Tour[] = [] 
+  tours: Tour[] = [];
+  reservedSpotsList: ReservedSpots[] = []; 
   currency = CurrentCurrency;
   
   constructor(private service: ToursService) { }
 
   ngOnInit() {
     this.service.getTours().subscribe(tours => this.tours = tours);
+    // this.service.getNumberOfReservedSpots().subscribe(reservedSpotsList => this.handleReservedSpots(reservedSpotsList));
+  }
+
+  handleReservedSpots(list: ReservedSpots[]) {
+    this.reservedSpotsList = list;
+    console.log(this.reservedSpotsList);
+    this.tours.forEach(tour => {
+      this.reservedSpotsList.forEach(reservedSpots => {
+        if (tour.id === reservedSpots.tourId) {
+          tour.freeSpots = tour.maxPeople - reservedSpots.reservedSpots;
+        }
+      });
+    });
   }
 
   getTheCheapestTour() {

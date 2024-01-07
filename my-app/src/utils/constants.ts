@@ -18,4 +18,7 @@ export const Currencies: Currency[] = [
     }
 ];
 
-export const CurrentCurrency: Currency = Currencies[0];
+export const CurrentCurrency: Currency = {
+    name: 'PLN',
+    multiplier: 1
+};

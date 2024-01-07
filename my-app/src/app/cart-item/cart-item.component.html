@@ -1,0 +1,24 @@
+<div class="res-container">
+    <img [src]="tour.imageUrl" alt="tour image">
+    <div class="info-left">
+        <p>{{ tour.name }}</p>
+        <p>{{ tour.description }}</p>
+    </div>
+    <div class="info-right">
+        <p>Reserved spots: {{ reservation.reservedSpots }}</p>
+        <p>Total price:{{ reservation.totalPrice }}</p>
+    </div>
+</div>
+<div class="buttons">
+    <button mat-icon-button>
+        <mat-icon>add</mat-icon>
+    </button>
+    <button mat-icon-button>
+        <mat-icon>remove</mat-icon>
+    </button>
+    <button mat-icon-button>
+        <mat-icon>delete</mat-icon>
+    </button>
+    <button [routerLink]="['../tours/details', tour.id]" mat-flat-button color="primary">Go to details</button>
+</div>
+

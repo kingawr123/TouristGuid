@@ -9,7 +9,6 @@
             <img src="{{tour.imageUrl}}" alt="image">
             <div class="tour-info">
                 <h2>{{tour.name}}</h2>
-                <!-- <p>{{tour.description}}</p> -->
                 <p>{{tour.startDate | date:'dd/MM/yyyy'}} - {{tour.endDate | date:'dd/MM/yyyy'}}</p>
                 <p>price: {{tour.price / currency.multiplier | number: '1.0-2'}} {{ currency.name }}</p>
                 <p>available spots: {{tour.freeSpots}} </p>

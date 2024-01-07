@@ -6,6 +6,7 @@ import { of } from 'rxjs';
 
 import { Tour } from '../models/Tour';
 import { Rate } from '../models/Rate';
+import { ReservedSpots } from '../models/ReservedSpots';
 
 const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' })};
 const toursUrl = 'http://localhost:3000/api/tours';
@@ -28,6 +29,11 @@ export class ToursService {
       tap(_ => console.log(`fetched rating for tour with id ${id}`)),
       catchError(this.handleError<Rate[]>(`getTourRating id=${id}`))
     );
+  }
+
+  getNumberOfReservedSpots(): Observable<ReservedSpots[]> {
+    const url = `${toursUrl}/reservedspots`;
+    return this.http.get<ReservedSpots[]>(url)
   }
   
   getTour(id: string): Observable<Tour> {

@@ -1,0 +1,20 @@
+.main-container {
+    width: 96vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.list-of-reservations {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+app-cart-item {
+    width: 100%;
+    margin-bottom: 10px;
+}
