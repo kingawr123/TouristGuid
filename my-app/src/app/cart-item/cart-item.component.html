@@ -6,19 +6,20 @@
     </div>
     <div class="info-right">
         <p>Reserved spots: {{ reservation.reservedSpots }}</p>
-        <p>Total price:{{ reservation.totalPrice }}</p>
+        <p>Total price: {{ reservation.totalPrice / currency.multiplier | number: '1.0-2'}} {{ currency.name }}</p>
+    </div>
+    <div class="buttons">
+        <button mat-icon-button>
+            <mat-icon>add</mat-icon>
+        </button>
+        <button mat-icon-button>
+            <mat-icon>remove</mat-icon>
+        </button>
+        <button mat-icon-button>
+            <mat-icon>delete</mat-icon>
+        </button>
+        <button [routerLink]="['../tours/details', tour.id]" mat-flat-button color="primary">Go to details</button>
     </div>
 </div>
-<div class="buttons">
-    <button mat-icon-button>
-        <mat-icon>add</mat-icon>
-    </button>
-    <button mat-icon-button>
-        <mat-icon>remove</mat-icon>
-    </button>
-    <button mat-icon-button>
-        <mat-icon>delete</mat-icon>
-    </button>
-    <button [routerLink]="['../tours/details', tour.id]" mat-flat-button color="primary">Go to details</button>
-</div>
+
 

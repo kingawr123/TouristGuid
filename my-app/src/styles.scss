@@ -31,6 +31,11 @@ p {
     color: #333;
     font-weight: 400;
 }
+
+.bold {
+    font-weight: bolder;
+}
+
 html, body { height: 100%; overflow-x: hidden;}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
@@ -41,4 +46,28 @@ footer p {
 footer .map-footer google-map .map-container{
     width: 500px !important;
     height: 200px !important;
+}
+
+@media screen and (max-width: 768px) {
+    h1 {
+        font-size: 3rem;
+    }
+    
+    h2 {
+        font-size: 2.5rem;
+    }
+    
+    h3 {
+        font-size: 1.5rem;
+    }
+    
+    p {
+        font-size: 1rem;
+    }
+    
+    footer .map-footer google-map .map-container{
+        width: 300px !important;
+        height: 200px !important;
+    }
+    
 }

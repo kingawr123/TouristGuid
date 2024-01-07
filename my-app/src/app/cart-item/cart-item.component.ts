@@ -1,3 +1,4 @@
+import { Currency } from './../../utils/constants';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { Tour } from '../../models/Tour';
@@ -6,11 +7,12 @@ import { Reservation } from './../../models/Reservation';
 import { Component, Input, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ReservationsService } from '../../services/reservations.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-cart-item',
   standalone: true,
-  imports: [MatIconModule, MatButtonModule, RouterLink],
+  imports: [MatIconModule, MatButtonModule, RouterLink, CommonModule],
   templateUrl: './cart-item.component.html',
   styleUrl: './cart-item.component.scss'
 })
@@ -23,6 +25,11 @@ export class CartItemComponent implements OnInit{
     reservedSpots: 0,
     createdAt: new Date(),
     updatedAt: new Date()
+  };
+
+  @Input() currency: Currency = {
+    name: '',
+    multiplier: 1
   };
 
   tour: Tour = {

@@ -41,7 +41,8 @@ export class TourDetailsComponent implements OnInit{
 
   tourRating: Rate = {
     id: '',
-    avgRating: 0
+    avgRating: 0,
+    count: 0
   };
   
   mapReady: boolean = false;

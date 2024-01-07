@@ -5,7 +5,7 @@
     </div>
     <div class="right sector">
         <h3>{{tour.name}}</h3>
-        <p><mat-icon class="star">star</mat-icon>{{tourRating.avgRating}}</p>
+        <p><mat-icon class="star">star</mat-icon>{{tourRating.avgRating}} ({{ tourRating.count }})</p>
         <p>{{tour.startDate | date:'dd/MM/yyyy'}} - {{tour.endDate | date:'dd/MM/yyyy'}}</p>
         <p>{{tour.description}}</p>
         <p>{{tour.destination}}</p>
