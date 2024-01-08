@@ -7,6 +7,5 @@ export interface Tour {
     endDate: Date;
     price: number;
     maxPeople: number;
-    freeSpots: number,
     imageUrl: string;
 }

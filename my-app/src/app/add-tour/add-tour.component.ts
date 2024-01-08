@@ -9,6 +9,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { Currency, CurrentCurrency } from '../../utils/constants';
 @Component({
   selector: 'app-add-tour',
   standalone: true,
@@ -38,6 +39,8 @@ export class AddTourComponent {
   freeSpots: number = 0;
   imageUrl: string = '';
 
+  currency: Currency = CurrentCurrency;
+
   constructor(private service: ToursService) { }
 
   addTour() {
@@ -49,9 +52,8 @@ export class AddTourComponent {
       destination: this.destination,
       startDate: this.startDate,
       endDate: this.endDate,
-      price: this.price,
+      price: this.price / this.currency.multiplier,
       maxPeople: this.maxPeople,
-      freeSpots: this.maxPeople,
       imageUrl: this.imageUrl || this.basicImgUrl
     };
     this.service.addTour(tour).subscribe(tour =>tour = tour);

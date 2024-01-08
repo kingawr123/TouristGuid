@@ -6,38 +6,32 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { AddTourComponent } from '../add-tour/add-tour.component';
 import { RouterLink } from '@angular/router';
-import { Currency, Currencies, CurrentCurrency } from "../../utils/constants";
-import { ReservedSpots } from '../../models/ReservedSpots';
+import { Currency, CurrentCurrency } from "../../utils/constants";
+import { TourComponent } from '../tour/tour.component';
+import { CartWidgetComponent } from '../cart-widget/cart-widget.component';
 
 @Component({
   selector: 'app-tours',
   standalone: true,
-  imports: [CommonModule, MatIconModule, MatButtonModule, AddTourComponent, RouterLink],
+  imports: [
+    CommonModule, 
+    MatIconModule, 
+    MatButtonModule, 
+    AddTourComponent, 
+    RouterLink, 
+    TourComponent,
+    CartWidgetComponent],
   templateUrl: './tours.component.html',
   styleUrl: './tours.component.scss'
 })
 export class ToursComponent implements OnInit{
   tours: Tour[] = [];
-  reservedSpotsList: ReservedSpots[] = []; 
-  currency = CurrentCurrency;
+  currency: Currency = CurrentCurrency;
   
   constructor(private service: ToursService) { }
 
   ngOnInit() {
     this.service.getTours().subscribe(tours => this.tours = tours);
-    // this.service.getNumberOfReservedSpots().subscribe(reservedSpotsList => this.handleReservedSpots(reservedSpotsList));
-  }
-
-  handleReservedSpots(list: ReservedSpots[]) {
-    this.reservedSpotsList = list;
-    console.log(this.reservedSpotsList);
-    this.tours.forEach(tour => {
-      this.reservedSpotsList.forEach(reservedSpots => {
-        if (tour.id === reservedSpots.tourId) {
-          tour.freeSpots = tour.maxPeople - reservedSpots.reservedSpots;
-        }
-      });
-    });
   }
 
   getTheCheapestTour() {
@@ -48,24 +42,4 @@ export class ToursComponent implements OnInit{
     return this.tours.reduce((prev, curr) => prev.price > curr.price ? prev : curr);
   }
 
-  addToCart(tour: Tour, event: any) {
-    event.stopPropagation();
-    console.log(`Added ${tour.name} to cart`);
-    tour.freeSpots -= 1;
-    this.service.updateTour(tour);
-  }
-
-  removeFromCart(tour: Tour, event: any) {
-    event.stopPropagation();
-    tour.freeSpots += 1;
-    this.service.updateTour(tour);
-    console.log(`Removed ${tour.name} from cart`);
-    
-  }
-
-  deleteTour(tour: Tour) {
-    this.service.deleteTour(tour).subscribe(tour => this.tours = this.tours.filter(t => t.id !== tour.id));
-    // probably not the best way to do it, but it works
-    window.location.reload();
-  }
 }

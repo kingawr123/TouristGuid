@@ -1,25 +1,29 @@
-<div class="res-container">
+<div *ngIf="!deleted" class="res-container">
     <img [src]="tour.imageUrl" alt="tour image">
     <div class="info-left">
         <p>{{ tour.name }}</p>
-        <p>{{ tour.description }}</p>
+        <p>{{ tour.startDate | date:'dd/MM/yyyy' }} - {{ tour.endDate | date:'dd/MM/yyyy' }}</p>
+        <!-- <p>{{ tour.description }}</p> -->
+        <button [routerLink]="['../tours/details', tour.id]" mat-flat-button color="primary">Go to details</button>
     </div>
     <div class="info-right">
+        <p>Available spots: {{ availableSpots }}</p>
         <p>Reserved spots: {{ reservation.reservedSpots }}</p>
         <p>Total price: {{ reservation.totalPrice / currency.multiplier | number: '1.0-2'}} {{ currency.name }}</p>
     </div>
-    <div class="buttons">
-        <button mat-icon-button>
-            <mat-icon>add</mat-icon>
-        </button>
-        <button mat-icon-button>
-            <mat-icon>remove</mat-icon>
-        </button>
-        <button mat-icon-button>
-            <mat-icon>delete</mat-icon>
-        </button>
-        <button [routerLink]="['../tours/details', tour.id]" mat-flat-button color="primary">Go to details</button>
-    </div>
+</div>
+<div [ngClass]="{'deleted': deleted}" class="buttons">
+    <button [ngClass]="{'disabled': availableSpots == 0, 'little-room': availableSpots < 4}" mat-icon-button (click)="addToCart()">
+        <mat-icon>add</mat-icon>
+    </button>
+    <p class="bold">{{ counter }}</p>
+    <button  [ngClass]="{'disabled': reservation.reservedSpots == 1}" mat-icon-button (click)="removeFromCart()">
+        <mat-icon>remove</mat-icon>
+    </button>
+    <button mat-flat-button color="primary" (click)="updateReservation()">Change reservation</button>
+    <button mat-icon-button (click)="deleteReservation()">
+        <mat-icon>delete</mat-icon>
+    </button>
 </div>
 
 

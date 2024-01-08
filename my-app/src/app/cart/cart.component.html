@@ -4,6 +4,7 @@
         <div class="list-of-reservations">
             <app-cart-item *ngFor="let item of cartItems" [reservation]="item" [currency]="currency"></app-cart-item>
         </div>
+        <p *ngIf="cartItems.length == 0">Empty :c</p>
         <div class="shopping-info">
             <p><span class="bold">Total price:</span> {{ totalPrice / currency.multiplier | number: '1.0-2'}} {{ currency.name }}</p>
             <button mat-flat-button color="primary">Buy Tours</button>

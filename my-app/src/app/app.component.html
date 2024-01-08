@@ -4,7 +4,7 @@
     <a routerLink="/home">HOME</a>
     <a routerLink="/tours">Tours</a>
     <a routerLink="/addTour">Add Tour</a>
-    <a routerLink="/cart"><mat-icon>shopping_cart</mat-icon></a>
+    <a class="cart-a" routerLink="/cart"><mat-icon>shopping_cart</mat-icon><div class="cart-widget" [ngClass]="{'cart-fuuul': summary > 9}">{{ summary }}</div></a>
     <mat-form-field>
       <mat-select [(value)]="new_currency" (selectionChange)="updateCurrency()">
         <mat-option value="PLN">PLN</mat-option>

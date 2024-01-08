@@ -36,6 +36,36 @@
   width: 30%;
 }
 
+.buttons{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+}
+
+.deleted{
+  display: none;
+}
+
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.room{
+  display: none;
+  color: red;
+}
+
+.little-room{
+  color: red;
+}
+
+.no-room{
+  display: block;
+}
+
 @media screen and (max-width: 768px) {
   .res-container {
     flex-direction: column;

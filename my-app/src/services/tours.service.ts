@@ -31,6 +31,14 @@ export class ToursService {
     );
   }
 
+  getTourReservedSpots(id: string): Observable<ReservedSpots[]> {
+    const url = `${toursUrl}/${id}/reservationsinfo`;
+    return this.http.get<ReservedSpots[]>(url).pipe(
+      tap(_ => console.log(`fetched reserved spots for tour with id ${id}`)),
+      catchError(this.handleError<ReservedSpots[]>(`getTourReservedSpots id=${id}`))
+    );
+  }
+
   getNumberOfReservedSpots(): Observable<ReservedSpots[]> {
     const url = `${toursUrl}/reservedspots`;
     return this.http.get<ReservedSpots[]>(url)

@@ -16,18 +16,28 @@ export class ReservationsService {
   constructor(private http: HttpClient) { }
 
   reserveTour(reservation: Reservation) {
-    return this.http.post<Reservation>(reservationsUrl, reservation, httpOptions).pipe(
+    var url = `${reservationsUrl}/${reservation.tourId}`;
+    return this.http.post<Reservation>(url, reservation, httpOptions).pipe(
       tap(r => console.log(`Reserved tour with id ${r.id}`)),
       catchError(this.handleError<Reservation>('reserveTour'))
     );
   }
 
-  cancelReservation(reservation: Reservation) {
+  deleteReservation(reservation: Reservation) {
     const id = reservation.id;
     const url = `${reservationsUrl}/${id}`;
     return this.http.delete<Reservation>(url, httpOptions).pipe(
       tap(_ => console.log(`Canceled reservation with id ${id}`)),
       catchError(this.handleError<Reservation>('cancelReservation'))
+    );
+  }
+
+  updateReservation(reservation: Reservation) {
+    const id = reservation.id;
+    const url = `${reservationsUrl}/${id}`;
+    return this.http.put<Reservation>(url, reservation, httpOptions).pipe(
+      tap(_ => console.log(`Updated reservation with id ${id}`)),
+      catchError(this.handleError<Reservation>('updateReservation'))
     );
   }
 

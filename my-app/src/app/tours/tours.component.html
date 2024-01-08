@@ -1,29 +1,13 @@
 <div class="container">
+    <app-cart-widget></app-cart-widget>
     <h1>Available Tours</h1>
     <div class="list-of-tours">
-        <div [routerLink]="['details', tour.id]" class="tour" [ngClass]="{'cheap': tour === getTheCheapestTour(), 'expensive': tour === getTheMostExpensiveTour()}" *ngFor="let tour of tours">
-            <button id="delete" mat-icon-button (click)="deleteTour(tour)">
-                <mat-icon>delete</mat-icon>
-            </button>
-            
-            <img src="{{tour.imageUrl}}" alt="image">
-            <div class="tour-info">
-                <h2>{{tour.name}}</h2>
-                <p>{{tour.startDate | date:'dd/MM/yyyy'}} - {{tour.endDate | date:'dd/MM/yyyy'}}</p>
-                <p>price: {{tour.price / currency.multiplier | number: '1.0-2'}} {{ currency.name }}</p>
-                <p>available spots: {{tour.freeSpots}} </p>
-                <p class="room" [ngClass]="{'no-room': tour.freeSpots == 0}">There is no more spots available</p>
-                <div class="buttons">
-                    <button [ngClass]="{'disabled': tour.freeSpots == 0, 'little-room': tour.freeSpots < 4}" mat-icon-button (click)="addToCart(tour, $event)">
-                        <mat-icon>add</mat-icon>
-                    </button>
-                    <button [ngClass]="{'disabled': tour.freeSpots == tour.maxPeople}" mat-icon-button (click)="removeFromCart(tour, $event)">
-                        <mat-icon>remove</mat-icon>
-                    </button>
-                </div>
-            </div>
-        </div>
-    
+        <app-tour 
+            *ngFor="let tour of tours" 
+            [tour]="tour"
+            [routerLink]="['details', tour.id]"
+            [ngClass]="{'cheap': tour === getTheCheapestTour(), 'expensive': tour === getTheMostExpensiveTour()}">
+        </app-tour>
     </div>
     
 </div>

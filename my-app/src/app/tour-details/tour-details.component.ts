@@ -9,6 +9,8 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { ReviewsComponent } from './reviews/reviews.component';
 import { Rate } from '../../models/Rate';
 import { Currency, CurrentCurrency } from '../../utils/constants';
+import { ReservedSpots } from '../../models/ReservedSpots';
+import { Reservation } from '../../models/Reservation';
 
 @Component({
   selector: 'app-tour-details',
@@ -35,7 +37,6 @@ export class TourDetailsComponent implements OnInit{
     endDate: new Date(),
     price: 0,
     maxPeople: 0,
-    freeSpots: 0,
     imageUrl: ''
   }
 
@@ -55,6 +56,26 @@ export class TourDetailsComponent implements OnInit{
 
   currency: Currency = CurrentCurrency;
 
+  reervationsInfo: ReservedSpots = {
+    id: '',
+    tourId: '',
+    reservedSpots: 0
+  };
+
+  availableSpots: number = 0;
+
+  counter: number = 0;
+
+  reservation: Reservation = {
+    id: '',
+    userId: '',
+    tourId: '',
+    totalPrice: 0,   
+    reservedSpots: 0,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  }
+
   constructor(private service: ToursService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
@@ -66,7 +87,23 @@ export class TourDetailsComponent implements OnInit{
 
   handleInit(t: Tour){
     this.tour = t;
+    this.service.getTourReservedSpots(t.id).subscribe(reservedSpots => this.handleReservedSpots(reservedSpots[0]));
     this.getCoordinates(t);
+  }
+
+  handleReservedSpots(reservedSpots: ReservedSpots) {
+    if (reservedSpots){
+          this.reervationsInfo.reservedSpots = reservedSpots.reservedSpots;
+          this.reervationsInfo.id = reservedSpots.id
+          this.reervationsInfo.tourId = this.tour.id;
+          this.availableSpots = this.tour.maxPeople - reservedSpots.reservedSpots;
+    }
+    else {
+      this.reervationsInfo.reservedSpots = 0;
+      this.reervationsInfo.id = '';
+      this.reervationsInfo.tourId = this.tour.id;
+      this.availableSpots = this.tour.maxPeople;
+    }
   }
 
   storeResult(lat: number, lng: number) {
@@ -97,16 +134,30 @@ export class TourDetailsComponent implements OnInit{
     this.router.navigate(['/tours']);
   }
   
-  addToCart(tour: Tour) {
-    console.log(`Added ${tour.name} to cart`);
-    tour.freeSpots -= 1;
-    this.service.updateTour(tour);
+  addToCart() {
+    if (this.availableSpots > 0) {
+      this.counter += 1;
+      this.reervationsInfo.reservedSpots += 1;
+      this.reservation.reservedSpots += 1;
+      this.availableSpots -= 1;
+      this.reservation.totalPrice = this.counter * this.tour.price;
+      // this.service.updateReservedSpots(this.reervationsInfo);
+    }
   }
 
-  removeFromCart(tour: Tour) {
-    tour.freeSpots += 1;
-    this.service.updateTour(tour);
-    console.log(`Removed ${tour.name} from cart`);
-    
+  removeFromCart() {
+    if (this.counter > 1) {
+      this.counter -= 1;
+      this.reervationsInfo.reservedSpots -= 1;
+      this.reservation.reservedSpots -= 1;
+
+      this.availableSpots += 1;
+      this.reservation.totalPrice = this.counter * this.tour.price;
+      // this.service.updateReservedSpots(this.reervationsInfo);
+    }
+  }
+
+  addReservation() {
+    console.log("add reservation");
   }
 }

@@ -5,19 +5,27 @@
     </div>
     <div class="right sector">
         <h3>{{tour.name}}</h3>
-        <p><mat-icon class="star">star</mat-icon>{{tourRating.avgRating}} ({{ tourRating.count }})</p>
+        <p *ngIf="tourRating"><mat-icon class="star">star</mat-icon>{{tourRating.avgRating}} ({{ tourRating.count }})</p>
+        <p *ngIf="!tourRating">This tour hasn't been rated yet</p>
         <p>{{tour.startDate | date:'dd/MM/yyyy'}} - {{tour.endDate | date:'dd/MM/yyyy'}}</p>
         <p>{{tour.description}}</p>
         <p>{{tour.destination}}</p>
         <h3>Price: {{tour.price / currency.multiplier | number: '1.0-2'}} {{ currency.name }}</h3>
         <div class="buttons">
-            <button [ngClass]="{'disabled': tour.freeSpots == 0, 'little-room': tour.freeSpots < 4}" mat-icon-button (click)="addToCart(tour)">
+            <button [ngClass]="{'disabled': availableSpots == 0, 'little-room': availableSpots < 4}" mat-icon-button (click)="addToCart()">
                 <mat-icon>add</mat-icon>
             </button>
-            <button [ngClass]="{'disabled': tour.freeSpots == tour.maxPeople}" mat-icon-button (click)="removeFromCart(tour)">
+            <p class="bold">{{ counter }}</p>
+            <button  [ngClass]="{'disabled': reservation.reservedSpots == 1}" mat-icon-button (click)="removeFromCart()">
                 <mat-icon>remove</mat-icon>
             </button>
+            <button mat-icon-button>
+                <mat-icon>delete</mat-icon>
+            </button>
+            <button (click)="addReservation()" [routerLink]="['../../../cart']" mat-flat-button color="primary">Reserve Tour</button>
         </div>
+        
+        
         <!-- <div id="map" class="map" [ngClass]="{'show-map': mapReady==true}">
             <google-map [options]="mapOptions"></google-map>
         </div> -->

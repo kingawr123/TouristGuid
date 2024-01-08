@@ -36,6 +36,24 @@ p {
     font-weight: bolder;
 }
 
+.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.room{
+    display: none;
+    color: red;
+}
+
+.little-room{
+    color: red;
+}
+
+.no-room{
+    display: block;
+}
+
 html, body { height: 100%; overflow-x: hidden;}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 

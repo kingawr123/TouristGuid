@@ -57,6 +57,28 @@ mat-form-field {
 }
 
 
+.cart-a{ 
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.cart-widget{
+    width: 25px;
+    height: 25px;
+    padding: 0;
+    border-radius: 5px;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+}
+
+.cart-fuuul {
+    background-color: green;
+}
 
 .hg{
     font-weight: 700;

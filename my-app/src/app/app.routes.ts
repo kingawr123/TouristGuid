@@ -11,5 +11,5 @@ export const routes: Routes = [
     {path: 'tours', component: ToursComponent},
     {path: 'addTour', component: AddTourComponent},
     {path: 'tours/details/:id', component: TourDetailsComponent},
-    {path: '', redirectTo: '/home', pathMatch: 'full'}
+    {path: '', redirectTo: '/tours', pathMatch: 'full'}
 ];

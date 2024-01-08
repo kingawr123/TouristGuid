@@ -13,7 +13,7 @@
         <input matInput type="text" placeholder="Image Url" name="tour.imageUrl" [(ngModel)]="imageUrl">
     </mat-form-field>
     <mat-form-field floatLabel="always">
-        <mat-label>Price PLN</mat-label>
+        <mat-label>Price {{ currency.name }}</mat-label>
         <input class="example-right-align" matInput min="0" type="number" name="tour.price" [(ngModel)]="price">
     </mat-form-field>
     <mat-form-field floatLabel="always">
