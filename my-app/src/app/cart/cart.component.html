@@ -7,7 +7,7 @@
         <p *ngIf="cartItems.length == 0">Empty :c</p>
         <div class="shopping-info">
             <p><span class="bold">Total price:</span> {{ totalPrice / currency.multiplier | number: '1.0-2'}} {{ currency.name }}</p>
-            <button mat-flat-button color="primary">Buy Tours</button>
+            <button mat-flat-button (click)="buyTours()" color="primary">Buy Tours</button>
         </div>
     </div>
 

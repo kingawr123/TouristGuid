@@ -32,6 +32,13 @@ export class ReservationsService {
     );
   }
 
+  deleteAllReservations() {
+    return this.http.delete<Reservation[]>(reservationsUrl, httpOptions).pipe(
+      tap(_ => console.log(`Canceled all reservations`)),
+      catchError(this.handleError<Reservation[]>('cancelAllReservations'))
+    );
+  }
+
   updateReservation(reservation: Reservation) {
     const id = reservation.id;
     const url = `${reservationsUrl}/${id}`;

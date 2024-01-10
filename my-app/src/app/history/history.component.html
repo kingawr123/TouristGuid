@@ -1,0 +1,11 @@
+<div class="main-container">
+    <div class="top-container">
+        <h2>Purchased Tours</h2>
+        <div class="list-of-reservations">
+            <app-history-item *ngFor="let item of boughtTours" [boughtTour]="item" [currency]="currency"></app-history-item>
+        </div>
+        <p *ngIf="boughtTours.length == 0">You haven't purchased anything yet :c</p>
+
+    </div>
+
+</div>

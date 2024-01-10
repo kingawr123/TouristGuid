@@ -68,30 +68,13 @@ export class ToursService {
     );
   }
 
-  updateTour(tour: Tour) {
-    const id = tour.id;
+  updateTourAvailableSpots(id: string, boughtSpots: number) {
     const url = `${toursUrl}/${id}`;
-    return this.http.put<Tour>(url, tour, httpOptions).pipe(
+    return this.http.put<Tour>(url, {maxPeople: boughtSpots}, httpOptions).pipe(
       tap(_ => console.log(`updated tour with id ${id}`)),
       catchError(this.handleError<Tour>('reserveTour'))
     );
   }
-
-
-  // reserveTour(tour: Tour) {
-  //   const index = this.tours.indexOf(tour);
-  //   if (index !== -1 && this.tours[index].freeSpots > 0){
-  //     this.tours[index].freeSpots -= 1;
-  //   }
-  // }
-
-  // deleteReservation(tour: Tour) {
-  //   const index = this.tours.indexOf(tour);
-  //   if (index !== -1 && this.tours[index].freeSpots < this.tours[index].maxPeople) {
-  //     this.tours[index].freeSpots += 1;
-  //   }
-  // }
-
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => { 

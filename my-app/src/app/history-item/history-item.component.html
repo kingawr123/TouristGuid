@@ -1,0 +1,15 @@
+<div class="res-container">
+    <img [src]="boughtTour.imageUrl" alt="tour image">
+    <div class="info-left">
+        <p>{{ boughtTour.name }}</p>
+        <p>{{ boughtTour.startDate | date:'dd/MM/yyyy' }} - {{ boughtTour.endDate | date:'dd/MM/yyyy' }}</p>
+        <p>{{ boughtTour.description }}</p>
+    </div>
+    <div class="info-right">
+        <p>Reserved spots: {{ boughtTour.reservedSpots }}</p>
+        <p>Total price: {{ boughtTour.totalPrice / currency.multiplier | number: '1.0-2'}} {{ currency.name }}</p>
+        <p>Date of purchase: {{ boughtTour.boughtDate | date:'dd/MM/yyyy' }}</p>        
+    </div>
+</div>
+
+

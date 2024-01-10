@@ -1,0 +1,32 @@
+.main-container {
+    width: 96vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+h2{
+    width: 100%;
+}
+
+.top-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.list-of-reservations {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+app-history-item {
+    width: 100%;
+    margin-bottom: 10px;
+}
