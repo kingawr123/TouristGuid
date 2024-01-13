@@ -10,8 +10,10 @@ import { Component, Input } from '@angular/core';
   templateUrl: './history-item.component.html',
   styleUrl: './history-item.component.scss'
 })
+
 export class HistoryItemComponent {
   @Input() boughtTour: BoughtTour = {} as BoughtTour;
   @Input() currency: Currency = {} as Currency;
+  @Input() state: string = '';
 
 }

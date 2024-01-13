@@ -23,4 +23,18 @@ export class HistoryComponent implements OnInit{
   ngOnInit(): void {
       this.service.getHistory().subscribe(data => this.boughtTours = data);
   }
+
+  checkStatus(boughtTour: BoughtTour): string {
+    var currentDate = new Date();
+    var end = new Date(boughtTour.endDate);
+    var start = new Date(boughtTour.startDate);
+    
+    if (currentDate < start) {
+      return 'upcoming';
+    } else if (currentDate > end) {
+      return 'finished';
+    } else {
+      return 'ongoing';
+    }
+  }
 }

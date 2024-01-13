@@ -9,6 +9,7 @@
         <p>Reserved spots: {{ boughtTour.reservedSpots }}</p>
         <p>Total price: {{ boughtTour.totalPrice / currency.multiplier | number: '1.0-2'}} {{ currency.name }}</p>
         <p>Date of purchase: {{ boughtTour.boughtDate | date:'dd/MM/yyyy' }}</p>        
+        <p>Tour status: {{ state }}</p>
     </div>
 </div>
 
